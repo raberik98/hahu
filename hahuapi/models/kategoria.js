@@ -3,7 +3,10 @@ const Schema = mongoose.Schema
 
 const kategoriaSchema = new Schema({
     _id: Number,
-    kategoria: Number,
+    kategoria: {
+        type:Number,
+        default: 1
+    },
     nev: {
         type:String,
         required: true,
