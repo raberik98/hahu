@@ -6,4 +6,5 @@
 3. mongoose telepítése npp i --save mongoose
 
 A 2. feladat adatbázis létrehozása:
-1. A lokális mongodb szerver elindítása: cmd-ben: mongod parancs és az ablakot nem szabad becsukni vagy a compass-ban beírjuk a szerver url-jét: mongodb://127.0.0.1:27017
+1. A lokális mongodb szerver elindítása: cmd-ben: mongod parancs és az ablakot nem szabad becsukni vagy a compass-ban beírjuk a szerver url-jét: mongodb://127.0.0.1:27017 ...
+
