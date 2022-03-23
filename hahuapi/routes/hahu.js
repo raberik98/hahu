@@ -1,4 +1,5 @@
 const express = require('express');
+const hirdetes = require('../models/hirdetes');
 const router = express.Router();
 const Hirdetes = require('../models/hirdetes')
 
@@ -31,7 +32,7 @@ router.post('/', function(req,res,next) {
         hirdetes.save()
         .then(res.json({'message': 'Létrejött'}))
         .catch(err => console.log(err))
-        
+
     } catch (error) {
         res.status(400).json({
             "Error": error.message
@@ -41,4 +42,19 @@ router.post('/', function(req,res,next) {
     
 })
 
+
+router.get('/', function(req,res,next){
+    Hirdetes.find()
+    .then(hirdetesek => {
+        res.json(hirdetesek)
+    })
+})
+
+
+router.delete('/:id', function(req,res,next) {
+    const id = req.params.id
+    hirdetes.findByIdAndDelete(id)
+    .then(res.status(200).json({"Message":"Sikeres a törlés"}))
+    .catch(err => console.log(err))
+})
 module.exports = router;
