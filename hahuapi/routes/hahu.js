@@ -13,20 +13,32 @@ router.post('/', function(req,res,next) {
     const arFt = req.body.arFt
     const kepUrl = req.body.kepUrl
 
-    const hirdetes = new Hirdetes({
-        _id,
-        kategoria,
-        cim,
-        leiras,
-        hirdetesDatuma,
-        serulesmentes,
-        arFt,
-        kepUrl
-    })
+    try {
+        if (arFt % 1000 != 0) {
+            throw Error("Ár nem osztahtó 1000-rel!")
+        }
+        const hirdetes = new Hirdetes({
+            _id,
+            kategoria,
+            cim,
+            leiras,
+            hirdetesDatuma,
+            serulesmentes,
+            arFt,
+            kepUrl
+        })
+    
+        hirdetes.save()
+        .then(res.json({'message': 'Létrejött'}))
+        .catch(err => console.log(err))
+        
+    } catch (error) {
+        res.status(400).json({
+            "Error": error.message
+        })
+    }
 
-    hirdetes.save()
-    .then(res.json({'message': 'Létrejött'}))
-    .catch(err => console.log(err))
+    
 })
 
 module.exports = router;
