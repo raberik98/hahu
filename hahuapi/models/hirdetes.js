@@ -3,7 +3,9 @@ const Schema = mongoose.Schema
 
 const hirdetesSchema = new Schema({
     _id: Number,
-    kategoria: Number,
+    kategoria:{
+        Number
+    },
     cim: {
         type:String,
         required: true,
